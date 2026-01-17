@@ -1,0 +1,138 @@
+﻿@model IEnumerable<Portfolio_site_hw.Models.Person>
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Global */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #fdfdfd;
+            width: 100%;
+            margin-top: 56px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        
+        /* Showcase Section */
+        .showcase {
+            position: relative;
+            padding: 80px 100px;
+            background-color: #f5f5f5;
+            display: flex;
+            width: 100%;
+            height: 582px;
+            justify-content: space-between;
+            border-bottom: 3px solid #2323ff;
+            margin-top: 56px;
+
+            img{
+                width: 500px;
+                height: 500px;
+                object-fit: cover;
+            z-index: 1;
+            }
+
+            .text-part{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: right;
+                margin-top: 50px;
+
+                a{
+                    background-color: #2323ff;
+                    width: 80px;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    color: #ffffff;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    margin-left: 80%;
+                }
+
+                a:hover{
+                    background-color: #1f9fff;
+                }
+
+                h1{
+                    font-size: 48px;
+                    font-weight: 700;
+                }
+                h3{
+                    font-size: 24px;
+                    margin-bottom: 20px;
+                    color: #2323ff;
+                    font-weight: 500;
+            }
+        }
+
+        .Portf{
+            position: absolute;
+            top: 33.5%;
+            left: 0;
+            transform: rotate(270deg);
+            font-size: 150px;
+            font-weight: 700;
+            color: #2323ff;
+            -webkit-text-stroke: 2px #2323ff;
+            opacity: 40%;
+            z-index: 0;
+        }
+
+        .PortfStroke {
+            position: absolute;
+            top: 32%;
+            left: 0;
+            transform: rotate(270deg);
+            font-size: 150px;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 3px #2323ff;
+            opacity: 40%;
+            z-index: 2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f1f1f;
+            color: #ccc;
+            text-align: center;
+            padding: 25px 0;
+        }
+    </style>
+</head>
+<body>
+    <section class="showcase" id="showcase">
+            <h1 class="Portf">Portfolio</h1>
+            <h1 class="PortfStroke">Portfolio</h1>
+            @foreach (var person in Model)
+            {
+
+                <img src="~/@person.ImagePath" alt="Alternate Text" />
+                <div class="text-part">
+                    <p>Hello,</p>
+                    <h1>I'm @person.Name @person.Surname</h1>
+                    <h3>@person.JobTitle</h3>
+                    <a class="hire-btn" asp-controller="People" asp-action="Hire">Hire Me</a>
+                </div>
+            }
+    </section>
+
+    <!-- Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

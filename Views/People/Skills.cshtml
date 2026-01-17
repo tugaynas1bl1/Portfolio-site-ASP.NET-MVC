@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Portfolio_site_hw.Models.Person>
+
+@{
+    ViewData["Title"] = "Skills";
+}
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #050510;
+        color: #fff;
+    }
+
+    /* ===== SKILLS SECTION ===== */
+    .skills-section {
+        width: 100%;
+        min-height: 100vh;
+        padding: 140px 80px 100px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .skills-bg-text {
+        position: absolute;
+        top: 18%;
+        left: -170px;
+        font-size: 160px;
+        font-weight: 800;
+        color: transparent;
+        -webkit-text-stroke: 2px #2323ff;
+        opacity: 0.15;
+        transform: rotate(-90deg);
+    }
+
+    .skills-card {
+        background: rgba(255,255,255,0.05);
+        backdrop-filter: blur(12px);
+        border-radius: 22px;
+        padding: 60px;
+        border: 1px solid rgba(255,255,255,0.08);
+        transition: 0.4s;
+    }
+
+        .skills-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(35,35,255,0.35);
+        }
+
+    .skills-title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    .skill-item {
+        margin-bottom: 40px;
+    }
+
+    .skill-bar {
+        width: 100%;
+        background: rgba(255,255,255,0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        height: 25px;
+        margin-bottom: 10px;
+    }
+
+    .skill-progress {
+        height: 100%;
+        background: #2323ff;
+        width: 0%;
+        border-radius: 20px;
+        text-align: right;
+        padding-right: 10px;
+        color: white;
+        font-weight: 500;
+        line-height: 25px;
+        transition: width 1.2s ease-in-out;
+    }
+
+    .skill-desc {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #d6d6ff;
+        padding-left: 5px;
+    }
+
+    hr {
+        border: 1px solid rgba(35,35,255,0.2);
+        margin: 30px 0;
+    }
+
+</style>
+
+<section class="skills-section">
+    <div class="skills-bg-text">SKILLS</div>
+
+    <div class="container">
+        @foreach (var person in Model)
+        {
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="skills-card">
+                        <h1 class="skills-title">My <span style="color:#2323ff">Skills</span></h1>
+                        <h4 class="text-primary">@person.JobTitle</h4>
+
+                        <!-- Skill List -->
+                        @foreach (var skill in person.Skills ?? new List<Skill>())
+                        {
+                            <div class="skill-item">
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-skill="@(skill.ProficiencyPercentage)%">
+                                        @skill.Name
+                                    </div>
+                                </div>
+                                <div class="skill-desc">
+                                    @skill.Description
+                                </div>
+                            </div>
+                            <hr />
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const skillBars = document.querySelectorAll('.skill-progress');
+
+        function animateSkills() {
+            skillBars.forEach(bar => {
+                const skillValue = bar.getAttribute('data-skill');
+                bar.style.width = skillValue;
+            });
+        }
+
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
+        }
+
+        function checkSkills() {
+            skillBars.forEach(bar => {
+                if (isInViewport(bar)) {
+                    bar.style.width = bar.getAttribute('data-skill');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkSkills);
+        animateSkills(); // initial load
+    });
+</script>
