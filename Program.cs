@@ -105,7 +105,7 @@ List<SocialMedia> socialMedias = new List<SocialMedia>
         Id = 2,
         Platform = "Instagram",
         PlatformIconRoot = "fab fa-instagram",
-        Url = "",
+        Url = "https://instagram.com/tugainasibly",
         PersonId = 1
     },
 
@@ -137,9 +137,9 @@ person = Person.GetInstance(
     "Fullstack Programmer",
     @"My name is Tugay Nasibli, and I am a Fullstack Programmer with a strong academic background and a passion for building practical, impactful software solutions.
 
-I completed my secondary education at the 132–134 Education Complex, where I developed an early interest in technology and logical problem - solving.I later graduated with a high - grade Bachelor’s degree from Azerbaijan Technical University, where I strengthened my foundations in computer science, programming, and engineering thinking.
+I completed my secondary education at the 132â€“134 Education Complex, where I developed an early interest in technology and logical problem - solving.I later graduated with a high - grade Bachelorâ€™s degree from Azerbaijan Technical University, where I strengthened my foundations in computer science, programming, and engineering thinking.
 
-As a developer, I work across both frontend and backend technologies, focusing on creating scalable, user - oriented, and well - structured applications.I have hands - on experience with modern web development concepts, object - oriented programming, databases, and software architecture.I value clean code, maintainability, and understanding why a solution works—not just how.
+As a developer, I work across both frontend and backend technologies, focusing on creating scalable, user - oriented, and well - structured applications.I have hands - on experience with modern web development concepts, object - oriented programming, databases, and software architecture.I value clean code, maintainability, and understanding why a solution worksâ€”not just how.
 
 Beyond technical skills, I am highly analytical and constantly question assumptions to improve ideas and implementations.I enjoy turning complex problems into clear, efficient solutions and continuously learning new technologies to stay up to date in the fast - evolving tech world.
 
